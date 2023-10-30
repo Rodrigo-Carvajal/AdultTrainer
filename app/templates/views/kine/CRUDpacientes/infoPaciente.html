@@ -1,0 +1,59 @@
+{% extends "layouts/kineLayout.html" %}
+
+{% block title %}Información paciente{% endblock %}
+
+{% block body %}
+<div class="fondo">
+    <nav class="m-1" style="--bs-breadcrumb-divider: '>';">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('kinesiologo_main') }}"><i class="fa-solid fa-home"></i></a></li>
+            <li class="breadcrumb-item"><a href="{{ url_for('listar_pacientes', id_kinesiologo=current_user.get_id()) }}">Pacientes</a></li>
+            <li class="breadcrumb-item active">Información del paciente</li>
+        </ol>
+    </nav>
+    <section class="section profile p-5">
+        <div class="row equal-height">
+            <div class="col-xl-4 col-xl-4-custom">
+                <div class="card bg-light">
+                    <div class="card_body profile-card pt-4 d-flex flex-column align-items-center">
+                        <img class="rounded-circle perfil-max" src="{{ url_for('static', filename='assets/Messirve.png') }}" alt="Foto Paciente">
+                        <h2 class="text-black-50">{{paciente.nombre_completo}}</h2>
+                        <h3 class="text-black-50">Paciente N°{{paciente.id_paciente}}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <div  class="card bg-light">
+                    <div class="tab-content pt-2">
+                        <div id="profile-overview" class="tab-pane fade profile-overview active show" role="tabpanel">
+                            <h5 style="font-family: 'Poppins', sans-serif; text-align: left; border-radius: 20px;" class="card-title p-3 m-2 bg-primary bg-gradient text-white">Acerca de:</h5>
+                            <p class="small fst-italic">Nuestro paciente {{paciente.nombre_completo}}, lleva realizado XX sesiones.. bla bla</p>
+                            <h5 style="font-family: 'Poppins', sans-serif; text-align: left; border-radius: 20px;" class="card-title p-3 m-2 bg-primary bg-gradient text-white">Detalles del Perfil:</h5>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label text-primary">Nombre Completo</div>
+                                <div class="col-kg-9 col-md-8">{{paciente.nombre_completo}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label text-primary">Fecha Nacimiento</div>
+                                <div class="col-kg-9 col-md-8">{{paciente.fecha_nacimiento}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label text-primary">Genero</div>
+                                <div class="col-kg-9 col-md-8">{{paciente.genero}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label text-primary">Peso</div>
+                                <div class="col-kg-9 col-md-8">{{paciente.peso}} Kgs.</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label text-primary">Estatura</div>
+                                <div class="col-kg-9 col-md-8">{{paciente.estatura}} Mts.</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

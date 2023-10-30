@@ -1,13 +1,8 @@
-from flask import Flask, jsonify
-import os
+# Importación de app:
+from app import app
+from config import config
 
-app = Flask(__name__)
-
-
-@app.route('/')
-def index():
-    return jsonify({"Choo Choo": "Welcome to your Flask app 🚅"})
-
-
+# Ejecución de la aplicación:
 if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv("PORT", default=5000))
+    app.config.from_object(config['development'])
+    app.run(host="0.0.0.0", port=5000, debug= True)
